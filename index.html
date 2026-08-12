@@ -3,26 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
+    <title>Dark Mode Toggle</title>
+
+    <style>
+        body {
+            background-color: white;
+            color: black;
+            transition: 0.3s;
+        }
+
+        body.dark-mode {
+            background-color: black;
+            color: white;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
 
-    <h1>Welcome to My Website</h1>
+    <div>
+        <button id="submit-btn">
+            Dark Mode
+        </button>
+    </div>
 
-    <p>This is a simple HTML page created without CSS or JavaScript.</p>
+    <p id="p-class">
+        Helllooooo
+    </p>
 
-    <h2>About</h2>
-    <p>This page demonstrates the basic structure of an HTML document.</p>
+    <script>
+        const btn = document.getElementById("submit-btn");
 
-    <h2>Features</h2>
-    <ul>
-        <li>HTML only</li>
-        <li>No CSS</li>
-        <li>No JavaScript</li>
-    </ul>
+        const para = document.querySelector("#p-class");
+        para.innerText = "This is changed by DOM";
 
-    <h2>Contact</h2>
-    <p>Email: example@example.com</p>
+        btn.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+
+            if (document.body.classList.contains("dark-mode")) {
+                btn.innerText = "Light Mode";
+            } else {
+                btn.innerText = "Dark Mode";
+            }
+        });
+    </script>
 
 </body>
-</html> 
+</html>
